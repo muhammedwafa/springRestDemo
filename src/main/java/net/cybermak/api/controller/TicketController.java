@@ -1,5 +1,7 @@
 package net.cybermak.api.controller;
 
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import net.cybermak.api.model.Ticket;
 import net.cybermak.api.service.TicketService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,6 +19,8 @@ public class TicketController {
     private TicketService ticketService;
 
     // Create a new ticket
+    @Operation(summary = "Create a new ticket")
+    @ApiResponse(responseCode = "200", description = "Ticket created successfully")
     @PostMapping
     public ResponseEntity<String> createTicket(@Valid @RequestBody Ticket ticket) {
         Ticket createdTicket = ticketService.createTicket(ticket);
